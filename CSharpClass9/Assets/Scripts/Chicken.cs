@@ -5,6 +5,20 @@ public class Chicken : MonoBehaviour
     // 動畫控制器
     private Animator ani;
 
+    // 定義委派
+    public delegate void ChickenMethod();
+    // 定義事件
+    public event ChickenMethod onMoveOver;
+
+    private void Update()
+    {
+        if (transform.position.z >= 2)
+        {
+            // 引發
+            onMoveOver();
+        }
+    }
+
     private void Start()
     {
         ani = GetComponent<Animator>();

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class ChickenManager : MonoBehaviour
 {
@@ -48,5 +49,36 @@ public class ChickenManager : MonoBehaviour
             chickenAction();
             chickenAction = null;
         }
+    }
+
+    public Chicken[] chickens;
+
+    private void Start()
+    {
+        chickens[0].onMoveOver += moveToZero1;
+        chickens[1].onMoveOver += moveToZero2;
+        chickens[2].onMoveOver += moveToZero3;
+    }
+
+    private void moveToZero1()
+    {
+        Vector3 pos = chickens[0].transform.position;
+        pos.z = 0;
+        chickens[0].transform.position = pos;
+        Debug.Log("第一隻雞回到原點!");
+    }
+    private void moveToZero2()
+    {
+        Vector3 pos = chickens[1].transform.position;
+        pos.z = 0;
+        chickens[1].transform.position = pos;
+        Debug.Log("第二隻雞回到原點!");
+    }
+    private void moveToZero3()
+    {
+        Vector3 pos = chickens[2].transform.position;
+        pos.z = 0;
+        chickens[2].transform.position = pos;
+        Debug.Log("第三隻雞回到原點!");
     }
 }
